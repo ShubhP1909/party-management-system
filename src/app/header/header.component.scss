@@ -1,0 +1,25 @@
+.navbar-section-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 0 24px;
+}
+
+.logo-title-wrapper {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+@media screen and (max-width:992px) {
+    .navbar-section-wrapper {
+        margin: 0 4px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .logo-title-wrapper {
+        font-size: 20px;
+    }
+
+}

@@ -1,0 +1,95 @@
+<button type="button" class="btn btn-success add-product-btn-wrapper my-4" data-bs-toggle="modal" (click)="openModal()"
+    data-bs-target="#staticBackdrop">
+    Add Product
+</button>
+
+<div class="container-list-wrapper">
+    <div class="table-wrapper">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Company Name</th>
+                    <th>Mobile No</th>
+                    <th>Images</th>
+                    <th>Email</th>
+                    <th>GST-In</th>
+                    <th>Pan No</th>
+                    <th>Bank Details</th>
+                    <th>Address</th>
+                    <th>Credit Limit</th>
+                    <th>DOB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let partyData of partyListData">
+                    <td>{{ partyData?.name }}</td>
+                    <td>{{ partyData?.company_name }}</td>
+                    <td>{{ partyData?.mobile_no }}</td>
+                    <td *ngIf="partyData?.image"><img [src]="apiEndPoint + partyData?.image" alt="{{ partyData?.name }}"
+                            class="img-thumbnail img-list-wrapper"></td>
+                    <td *ngIf="!partyData?.image"><img src="../../assets/images/placeholder_img.webp"
+                            alt="placeholder_img" class="img-thumbnail img-list-wrapper"></td>
+                    <td>{{ partyData?.email }}</td>
+                    <td>{{ partyData?.gstin }}</td>
+                    <td>{{ partyData?.pan_no }}</td>
+                    <td *ngIf="!partyData?.bank_id?.length">
+                        NO Bank Details Found
+                    </td>
+                    <td class="bank-details-wrapper" *ngIf="partyData?.bank_id?.length">
+                        <ng-container *ngFor="let bankId of partyData.bank_id">
+                            <p class="m-0">Acc. Holder No: {{ bankId?.account_holder_name }}</p>
+                            <p class="m-0">Acc No: {{ bankId?.account_no }}</p>
+                            <p class="m-0">Bank Name: {{ bankId?.bank_name }}</p>
+                            <p class="m-0">Branch Name: {{ bankId?.branch_name }}</p>
+                            <p class="m-0">IFSC code: {{ bankId?.bank_ifsc_code }}</p>
+                            <br />
+                            <br />
+                        </ng-container>
+                    </td>
+                    <td *ngIf="!partyData?.address?.length">
+                        NO Address Found
+                    </td>
+                    <td class="bank-details-wrapper" *ngIf="partyData?.address?.length">
+                        <ng-container *ngFor="let address of partyData.address">
+                            <p class="m-0">Address Line1: {{ address?.address_line_1 }}</p>
+                            <p class="m-0">Address Line2: {{ address?.address_line_2 }}</p>
+                            <p class="m-0">City: {{ address?.city }}</p>
+                            <p class="m-0">Country: {{ address?.country }}</p>
+                            <p class="m-0">Pincode: {{ address?.pincode }}</p>
+                            <p class="m-0">State: {{ address?.state }}</p>
+                            <br />
+                            <br />
+                        </ng-container>
+                    </td>
+                    <td>{{ partyData?.credit_limit }}</td>
+                    <td>{{ partyData?.date_of_birth | date: 'dd-MM-yyyy' }}</td>
+                    <td class="d-flex align-item-center">
+                        <button type="button" class="btn p-0 me-2" data-bs-toggle="modal" (click)="openModal(partyData)"
+                            data-bs-target="#staticBackdrop">
+                            <img src="../../assets/images/edit.png" alt="edit-icon" />
+                        </button>
+                        <img src="../../assets/images/trash.png" (click)="openDeleteParty(partyData?.id)"
+                            alt="delete-icon" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{isEditModalShown ? 'Edit' : 'Add'}} Party
+                    Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-party-management-dailog [isEditModalOpen]="isEditModalShown" [partyDetailsData]="editPartyDetails"
+                    (onModalClose)="onModalClose($event)"></app-party-management-dailog>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div class="wrapper">
+    <div class="row justify-content-center login-wrapper m-0">
+        <h1 class="login-title">Login</h1>
+        <div class="col-md-6">
+            <div class="container login-body" *ngIf="loginForm">
+                <div class="justify-content-center">
+                    <form class="form-main" [formGroup]="loginForm" (submit)="submitForm($event)">
+                        <div class="form-group pb-1">
+                            <label class="label-required" for="email">Email</label>
+                            <span class="text-danger pl-1">*</span>
+                            <div class="input-group with-focus">
+                                <input type="email" id="email" formControlName="email" class="form-control"
+                                    autocomplete="off" />
+                                <div class="input-group-append border-left">
+                                    <span class="input-group-text input-text-wrapper text-muted bg-white">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div *ngIf="
+                    loginForm.controls['email'].hasError('required') &&
+                    (loginForm.controls['email'].dirty ||
+                      loginForm.controls['email'].touched)
+                  " class="text-danger">
+                                Email is required
+                            </div>
+                            <div *ngIf="
+                    loginForm.controls['email'].hasError('email') &&
+                    (loginForm.controls['email'].dirty ||
+                      loginForm.controls['email'].touched)
+                  " class="text-danger">
+                                Invalid Email address Please Enter a valid Email address
+                            </div>
+                        </div>
+                        <div class="form-group password-field mt-3">
+                            <label class="label-required" for="password">Password</label>
+                            <span class="text-danger pl-1">*</span>
+                            <div class="input-group with-focus">
+                                <input type="password" id="password" formControlName="password" class="form-control"
+                                    autocomplete="off" />
+                                <div class="input-group-append border-left">
+                                    <span class="input-group-text input-text-wrapper text-muted bg-white">
+                                        <em class="fa fa-key label-icons"></em>
+                                    </span>
+                                </div>
+                            </div>
+                            <div *ngIf="
+                    loginForm.controls['password'].hasError('required') &&
+                    (loginForm.controls['password'].dirty ||
+                      loginForm.controls['password'].touched)
+                  " class="text-danger">
+                                Password is required
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center btn-group-wrapper">
+                            <button [disabled]="!loginForm.valid || loginFormLoading"
+                                class="btn primary-background d-flex align-items-center login-btn p-0">
+                                <p class="mb-0 login-btn-text text-white">
+                                    Login
+                                </p>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

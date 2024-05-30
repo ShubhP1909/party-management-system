@@ -1,0 +1,124 @@
+.forgot-password-label {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.primary-color {
+    color: #008fd7;
+}
+
+.primary-background {
+    background-color: #008fd7;
+}
+
+.check-icon {
+    font-size: 20px;
+    padding: 10px 0 10px 15px;
+}
+
+label {
+    font-size: 13px;
+    line-height: 15px;
+    color: #000000;
+}
+
+.login-title {
+    margin: 79px 30px 34px;
+    padding-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    color: #000000;
+}
+
+.text-decoration-underline {
+    text-decoration: underline;
+}
+
+.text-black {
+    color: #000000;
+}
+
+.form-main {
+    padding-bottom: 32px;
+}
+
+.login-btn {
+    font-weight: 600;
+    height: 40px;
+    border: none;
+
+    span {
+        padding-top: 2px;
+    }
+}
+
+.dont-have-account {
+    margin-top: 19px;
+}
+
+.password-field {
+    margin-bottom: 30px;
+}
+
+.label-text {
+    margin-bottom: 14px;
+}
+
+.login-btn-text {
+    width: 170px;
+}
+
+.input-text-wrapper {
+    height: 100%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+::ng-deep {
+    .form-main {
+        .form-control:disabled {
+            background-color: #ffffff !important;
+            opacity: 0.6 !important;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .login-body {
+        padding: 0 40px;
+    }
+
+    .btn-group-wrapper {
+        margin-bottom: 42px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .login-title {
+        border: 0;
+        margin: 99px 40px 75px;
+        padding: 0;
+    }
+
+    .flex-direction {
+        flex-direction: column-reverse;
+    }
+
+    .login-btn-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+
+    .btn-group-wrapper {
+        margin-bottom: 37px;
+        width: 100%;
+    }
+
+    .form-main {
+        padding-bottom: 42px;
+    }
+}
